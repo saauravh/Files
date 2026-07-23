@@ -58,7 +58,7 @@ class GatewaySeeder extends Seeder
                     'crypto'                => $gateway['crypto'],
                     'supported_currencies'  => $gateway['supported_currencies'],
                     'gateway_parameters'    => json_encode([]),
-                    'form_id'               => 0,
+                    'form_id'               => null,
                 ]
             );
         }
