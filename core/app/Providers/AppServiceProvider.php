@@ -28,19 +28,23 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (!cache()->get('SystemInstalled')) {
-            $envFilePath = base_path('.env');
-            if (!file_exists($envFilePath)) {
-                header('Location: install');
-                exit;
+        try {
+            if (!cache()->get('SystemInstalled')) {
+                $envFilePath = base_path('.env');
+                if (!file_exists($envFilePath)) {
+                    header('Location: install');
+                    exit;
+                }
+                $envContents = file_get_contents($envFilePath);
+                if (empty($envContents)) {
+                    header('Location: install');
+                    exit;
+                } else {
+                    cache()->put('SystemInstalled', true);
+                }
             }
-            $envContents = file_get_contents($envFilePath);
-            if (empty($envContents)) {
-                header('Location: install');
-                exit;
-            } else {
-                cache()->put('SystemInstalled', true);
-            }
+        } catch (\Throwable $e) {
+            // Cache table may not exist yet (e.g. during first migration)
         }
 
 
@@ -75,8 +79,12 @@ class AppServiceProvider extends ServiceProvider
             ]);
         });
 
-        if (gs('force_ssl')) {
-            \URL::forceScheme('https');
+        try {
+            if (gs('force_ssl')) {
+                \URL::forceScheme('https');
+            }
+        } catch (\Throwable $e) {
+            // Table may not exist yet
         }
 
 

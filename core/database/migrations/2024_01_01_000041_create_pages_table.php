@@ -10,8 +10,11 @@ return new class extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
+            $table->string('tempname')->nullable();
+            $table->string('name')->nullable();
             $table->string('slug')->nullable();
+            $table->boolean('is_default')->default(0);
+            $table->json('secs')->nullable();
             $table->json('seo_content')->nullable();
             $table->timestamps();
         });
