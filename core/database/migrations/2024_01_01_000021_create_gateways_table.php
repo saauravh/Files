@@ -19,7 +19,7 @@ return new class extends Migration
             $table->json('input_form')->nullable();
             $table->json('supported_currencies')->nullable();
             $table->tinyInteger('crypto')->default(0);
-            $table->unsignedBigInteger('form_id')->default(0);
+            $table->unsignedBigInteger('form_id')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->text('description')->nullable();
             $table->timestamps();
