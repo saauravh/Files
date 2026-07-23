@@ -1,0 +1,178 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\NotificationTemplate;
+use Illuminate\Database\Seeder;
+
+class NotificationTemplateSeeder extends Seeder
+{
+    public function run(): void
+    {
+        $templates = [
+            [
+                'name'     => 'DEFAULT',
+                'subject'  => 'Default Notification',
+                'shortcodes' => ['site_name', 'username', 'email', 'message', 'subject'],
+                'email_body' => '<h2>Hello {{username}}</h2><p>{{message}}</p>',
+                'email_status' => 1,
+                'sms_body'  => '{{message}}',
+                'sms_status' => 1,
+                'push_title' => '{{subject}}',
+                'push_body'  => '{{message}}',
+                'push_status' => 1,
+            ],
+            [
+                'name'     => 'REGISTRATION',
+                'subject'  => 'Welcome to {{site_name}}',
+                'shortcodes' => ['site_name', 'username', 'email', 'password'],
+                'email_body' => '<h2>Welcome {{username}}</h2><p>Thank you for registering at {{site_name}}.</p><p>Email: {{email}}</p><p>Password: {{password}}</p>',
+                'email_status' => 1,
+                'sms_body'  => 'Welcome to {{site_name}}, {{username}}!',
+                'sms_status' => 1,
+                'push_title' => 'Welcome!',
+                'push_body'  => 'Welcome to {{site_name}}',
+                'push_status' => 1,
+            ],
+            [
+                'name'     => 'EMAIL_VERIFY',
+                'subject'  => 'Email Verification - {{site_name}}',
+                'shortcodes' => ['site_name', 'username', 'code', 'email', 'link'],
+                'email_body' => '<h2>Hello {{username}}</h2><p>Your email verification code is: <strong>{{code}}</strong></p><p>Or click this link: {{link}}</p>',
+                'email_status' => 1,
+                'sms_body'  => 'Your verification code is {{code}}',
+                'sms_status' => 1,
+                'push_title' => 'Email Verification',
+                'push_body'  => 'Your verification code is {{code}}',
+                'push_status' => 1,
+            ],
+            [
+                'name'     => 'SMS_VERIFY',
+                'subject'  => 'SMS Verification - {{site_name}}',
+                'shortcodes' => ['site_name', 'username', 'code'],
+                'email_body' => '<h2>Hello {{username}}</h2><p>Your SMS verification code is: <strong>{{code}}</strong></p>',
+                'email_status' => 1,
+                'sms_body'  => 'Your verification code is {{code}}',
+                'sms_status' => 1,
+                'push_title' => 'SMS Verification',
+                'push_body'  => 'Your verification code is {{code}}',
+                'push_status' => 1,
+            ],
+            [
+                'name'     => 'FORGET_PASSWORD',
+                'subject'  => 'Password Reset - {{site_name}}',
+                'shortcodes' => ['site_name', 'username', 'code', 'email', 'link'],
+                'email_body' => '<h2>Hello {{username}}</h2><p>Your password reset code is: <strong>{{code}}</strong></p><p>Or click this link: {{link}}</p>',
+                'email_status' => 1,
+                'sms_body'  => 'Your password reset code is {{code}}',
+                'sms_status' => 1,
+                'push_title' => 'Password Reset',
+                'push_body'  => 'Your password reset code is {{code}}',
+                'push_status' => 1,
+            ],
+            [
+                'name'     => 'PASSWORD_CHANGE',
+                'subject'  => 'Password Changed - {{site_name}}',
+                'shortcodes' => ['site_name', 'username', 'email'],
+                'email_body' => '<h2>Hello {{username}}</h2><p>Your password has been changed successfully.</p>',
+                'email_status' => 1,
+                'sms_body'  => 'Your password has been changed successfully.',
+                'sms_status' => 1,
+                'push_title' => 'Password Changed',
+                'push_body'  => 'Your password has been changed successfully.',
+                'push_status' => 1,
+            ],
+            [
+                'name'     => 'KYC_APPROVE',
+                'subject'  => 'KYC Approved - {{site_name}}',
+                'shortcodes' => ['site_name', 'username', 'email'],
+                'email_body' => '<h2>Hello {{username}}</h2><p>Your KYC has been approved successfully.</p>',
+                'email_status' => 1,
+                'sms_body'  => 'Your KYC has been approved successfully.',
+                'sms_status' => 1,
+                'push_title' => 'KYC Approved',
+                'push_body'  => 'Your KYC has been approved successfully.',
+                'push_status' => 1,
+            ],
+            [
+                'name'     => 'KYC_REJECT',
+                'subject'  => 'KYC Rejected - {{site_name}}',
+                'shortcodes' => ['site_name', 'username', 'email', 'reason'],
+                'email_body' => '<h2>Hello {{username}}</h2><p>Your KYC has been rejected. Reason: {{reason}}</p>',
+                'email_status' => 1,
+                'sms_body'  => 'Your KYC has been rejected. Reason: {{reason}}',
+                'sms_status' => 1,
+                'push_title' => 'KYC Rejected',
+                'push_body'  => 'Your KYC has been rejected.',
+                'push_status' => 1,
+            ],
+            [
+                'name'     => 'DEPOSIT_SUCCESS',
+                'subject'  => 'Deposit Successful - {{site_name}}',
+                'shortcodes' => ['site_name', 'username', 'email', 'method_name', 'amount', 'trx'],
+                'email_body' => '<h2>Hello {{username}}</h2><p>Your deposit of {{amount}} via {{method_name}} ({{trx}}) is successful.</p>',
+                'email_status' => 1,
+                'sms_body'  => 'Your deposit of {{amount}} is successful. Trx: {{trx}}',
+                'sms_status' => 1,
+                'push_title' => 'Deposit Successful',
+                'push_body'  => 'Your deposit of {{amount}} is successful.',
+                'push_status' => 1,
+            ],
+            [
+                'name'     => 'DEPOSIT_REJECT',
+                'subject'  => 'Deposit Rejected - {{site_name}}',
+                'shortcodes' => ['site_name', 'username', 'email', 'method_name', 'amount', 'trx', 'rejection_message'],
+                'email_body' => '<h2>Hello {{username}}</h2><p>Your deposit of {{amount}} via {{method_name}} ({{trx}}) has been rejected. Reason: {{rejection_message}}</p>',
+                'email_status' => 1,
+                'sms_body'  => 'Your deposit of {{amount}} has been rejected.',
+                'sms_status' => 1,
+                'push_title' => 'Deposit Rejected',
+                'push_body'  => 'Your deposit has been rejected.',
+                'push_status' => 1,
+            ],
+            [
+                'name'     => 'ADMIN_SUPPORT_REPLY',
+                'subject'  => 'Support Ticket Reply - {{site_name}}',
+                'shortcodes' => ['site_name', 'username', 'email', 'ticket_id', 'ticket_subject', 'reply', 'link'],
+                'email_body' => '<h2>Hello {{username}}</h2><p>An admin has replied to your support ticket ({{ticket_subject}}).</p><p>Reply: {{reply}}</p><p><a href="{{link}}">View Ticket</a></p>',
+                'email_status' => 1,
+                'sms_body'  => 'Admin replied to your support ticket {{ticket_subject}}',
+                'sms_status' => 1,
+                'push_title' => 'Support Reply',
+                'push_body'  => 'Admin replied to your support ticket.',
+                'push_status' => 1,
+            ],
+            [
+                'name'     => 'USER_SUPPORT_REPLY',
+                'subject'  => 'Support Ticket Reply - {{site_name}}',
+                'shortcodes' => ['site_name', 'username', 'email', 'ticket_id', 'ticket_subject', 'reply', 'link'],
+                'email_body' => '<h2>Hello Admin</h2><p>A user has replied to support ticket ({{ticket_subject}}).</p><p>Reply: {{reply}}</p><p><a href="{{link}}">View Ticket</a></p>',
+                'email_status' => 1,
+                'sms_body'  => 'User replied to support ticket {{ticket_subject}}',
+                'sms_status' => 1,
+                'push_title' => 'Support Reply',
+                'push_body'  => 'User replied to support ticket.',
+                'push_status' => 1,
+            ],
+            [
+                'name'     => 'SUBSCRIBE',
+                'subject'  => 'New Subscriber - {{site_name}}',
+                'shortcodes' => ['site_name', 'email'],
+                'email_body' => '<h2>New Subscriber</h2><p>{{email}} has subscribed to your newsletter.</p>',
+                'email_status' => 1,
+                'sms_body'  => '',
+                'sms_status' => 0,
+                'push_title' => 'New Subscriber',
+                'push_body'  => '{{email}} has subscribed.',
+                'push_status' => 1,
+            ],
+        ];
+
+        foreach ($templates as $template) {
+            NotificationTemplate::updateOrCreate(
+                ['name' => $template['name']],
+                $template
+            );
+        }
+    }
+}
