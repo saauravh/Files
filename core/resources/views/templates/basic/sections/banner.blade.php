@@ -28,7 +28,7 @@
                         {{ __(@$bannerContent->data_values->subheading) }}
                     </h1>
                     <div class="mx-auto">
-                        <a class="btn btn--base mt-3" href="{{ url(@$bannerContent->data_values->button_url) }}">
+                        <a class="btn btn--base mt-3" href="{{ url(@$bannerContent->data_values->button_url ?? '') }}">
                             {{ __(@$bannerContent->data_values->button_text) }}
                         </a>
                     </div>
